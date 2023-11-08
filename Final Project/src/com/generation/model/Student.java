@@ -24,6 +24,12 @@ public class Student
     public void enrollToCourse( Course course )
     {
         //TODO implement this method
+        // Martin's hints
+        //TODO 1. 'put' the course to student's approvedCourses aka HashMap<code, course> via registerApprovedCourse
+        registerApprovedCourse( course );
+        //TODO 2. ALSO, 'add' the course in the students' courses aka List<course>
+        courses.add(course);
+
     }
 
     public void registerApprovedCourse( Course course )
@@ -34,20 +40,28 @@ public class Student
     public boolean isCourseApproved( String courseCode )
     {
         //TODO implement this method
-        return false;
+        // Martin's hints
+        //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
+        //TODO if so, what do you return? Otherwise, what else do you return?
+        return approvedCourses.containsKey(courseCode);
+
     }
 
     // CHALLENGE IMPLEMENTATION: Read README.md to find instructions on how to solve. 
     public List<Course> findPassedCourses( Course course )
     {
-        //TODO implement this method
+        //TODO implement this method----------------------------------------------------------------------------------
         return null;
     }
 
     public boolean isAttendingCourse( String courseCode )
     {
         //TODO implement this method
-        return false;
+        // Martin's hints
+        //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
+        //TODO if so, what do you return? Otherwise, what else do you return?
+        return approvedCourses.containsKey(courseCode);
+
     }
 
     @Override
@@ -60,7 +74,9 @@ public class Student
     public List<Course> getApprovedCourses()
     {
         //TODO implement this method
-        return null;
+        // Martin's hints
+        //TODO 1. Hint, where do the list of courses come from?
+        return new ArrayList<>(approvedCourses.values());
     }
 
     @Override

@@ -88,7 +88,6 @@ public class CourseService
         for ( String key : enrolledStudents.keySet() )
         {
             List<Student> students = enrolledStudents.get( key );
-            System.out.println( "Students on Course " + key + ": " );
             for ( Student student : students )
             {
                 System.out.println( student );
