@@ -10,8 +10,10 @@ public class Course
 
     private final Module module;
 
+    private int grade;
 
-    public Course( String code, String name, int credits, Module module )
+
+    public Course( String code, String name, int credits, Module module)
     {
         this.code = code;
         this.name = name;
@@ -37,6 +39,16 @@ public class Course
     public Module getModule()
     {
         return module;
+    }
+
+    public int getGrade()
+    {
+        return grade;
+    }
+
+    public int setGrade(int grade)
+    {
+        return this.grade = grade;
     }
 
     @Override

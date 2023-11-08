@@ -43,9 +43,12 @@ public class Main
                 case 6:
                     showCoursesSummary( courseService, scanner );
                     break;
+                case 7:
+                    showCourseAverageGrade( courseService, scanner );
+                    break;
             }
         }
-        while ( option != 7 );
+        while ( option != 8 );
     }
 
     private static void enrollStudentToCourse( StudentService studentService, CourseService courseService,
@@ -80,14 +83,46 @@ public class Main
         courseService.showSummary();
     }
 
-    private static void showStudentsSummary( StudentService studentService, Scanner scanner )
+    private static void showCourseAverageGrade( CourseService courseService, Scanner scanner )
     {
-        studentService.showSummary();
+        System.out.println( "Insert course ID" );
+        String courseId = scanner.next();
+        courseService.showAverageGrade(courseId);
     }
 
     private static void gradeStudent( StudentService studentService, Scanner scanner )
     {
-       // studentService.gradeStudent();
+        System.out.println( "Insert student ID" );
+        String studentId = scanner.next();
+        Student student = studentService.findStudent( studentId );
+        if ( student == null )
+        {
+            System.out.println( "Invalid Student ID" );
+            return;
+        }
+        System.out.println( student );
+
+        System.out.println( "Insert course ID" );
+        String courseId = scanner.next();
+        boolean isAttendCourse = student.isAttendingCourse(courseId);
+        int courseIndex = student.getApprovedCourses().indexOf(courseId);
+        Course course = student.getApprovedCourses().get(courseIndex);
+        if ( !isAttendCourse )
+        {
+            System.out.println( student.getName() + " does not attend the course " + course.getName() );
+            return;
+        }
+        System.out.println( course );
+
+        System.out.println( "Insert/Update student's grade in the course" );
+        int grade = scanner.nextInt();
+        course.setGrade(grade);
+
+    }
+
+    private static void showStudentsSummary( StudentService studentService, Scanner scanner )
+    {
+        studentService.showSummary();
     }
 
     private static void findStudent( StudentService studentService, Scanner scanner )

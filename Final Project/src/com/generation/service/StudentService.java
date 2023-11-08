@@ -1,6 +1,7 @@
 package com.generation.service;
 
 import com.generation.model.Course;
+import com.generation.model.Module;
 import com.generation.model.Student;
 
 import java.util.HashMap;
@@ -10,6 +11,14 @@ import java.util.Map;
 public class StudentService
 {
     private final Map<String, Student> students = new HashMap<>();
+
+    public StudentService()
+    {
+    //    subscribeStudent( new Student( "stu-01", "Cheryl Tan", "cheryltan@gmail.com", Tue Dec 12 00:00:00 SGT 2000) );
+    //    subscribeStudent( new Student( "stu-02", "Fang Xin Hui", "fangxinhui@hotmail.com", "Fri Nov 23 00:00:00 SGT 2001") );
+    //    subscribeStudent( new Student( "stu-03", "Ahmad bin Osman", "ahmadbinosman@gmail.com", Wed May 05 00:00:00 SGT 2010) );
+    }
+
 
     public void subscribeStudent( Student student )
     {
@@ -50,7 +59,7 @@ public class StudentService
             List<Course> courses = studentName.getApprovedCourses();
             for ( Course course : courses )
             {
-                System.out.println( courses );
+                System.out.println( course );
             }
         }
 

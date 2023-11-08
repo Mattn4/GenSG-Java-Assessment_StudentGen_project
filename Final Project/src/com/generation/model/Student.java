@@ -51,6 +51,14 @@ public class Student
     public List<Course> findPassedCourses( Course course )
     {
         //TODO implement this method----------------------------------------------------------------------------------
+        List<Course> passedCourses = new ArrayList<>();
+
+        if ( course.getGrade() >= 60 )
+        {
+            passedCourses.add(course);
+            return passedCourses;
+        }
+
         return null;
     }
 
@@ -67,6 +75,23 @@ public class Student
     @Override
     public double getAverage()
     {
+        /* if use courses arraylist
+        double sum = 0;
+        for (Course course: courses) {
+            sum += course.getGrade();
+        }
+        average = sum/courses.size();
+
+        return average;
+         */
+
+        double sum = 0;
+        for ( String key : approvedCourses.keySet() )
+        {
+            sum += approvedCourses.get( key ).getGrade();
+        }
+        average = sum/approvedCourses.size();
+
         return average;
     }
 

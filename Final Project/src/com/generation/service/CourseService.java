@@ -94,4 +94,22 @@ public class CourseService
             }
         }
     }
+
+    public void showAverageGrade (String courseId) {
+
+        double sum = 0;
+        if ( enrolledStudents.containsKey( courseId ) )
+        {
+            List<Student> students = enrolledStudents.get( courseId );
+            for ( Student student : students )
+            {
+                int courseIndex = student.getApprovedCourses().indexOf(courseId);
+                int grade = student.getApprovedCourses().get(courseIndex).getGrade();
+                sum += grade;
+            }
+            double courseAverageGrade = sum/students.size();
+
+            System.out.println(courseAverageGrade);
+        }
+    }
 }
