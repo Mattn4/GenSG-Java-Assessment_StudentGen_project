@@ -41,7 +41,10 @@ public class CourseService
 
         enrollStudent("INTRO-CS-1", cheryl);
         enrollStudent("INTRO-CS-1", xinhui);
-        enrollStudent("INTRO-CS-2", ahmad);
+
+        enrollStudent("INTRO-CS-2", cheryl);
+
+        enrollStudent("INTRO-CS-3", ahmad);
 
         gradeStudentInCourse(cheryl, "INTRO-CS-1", 60);
         gradeStudentInCourse(xinhui, "INTRO-CS-1", 90);

@@ -7,8 +7,13 @@ public class StudentServiceTest {
 
     StudentService studentService = new StudentService();
 
+    // Refer to student lists in StudentService file
+    // stu01 -> Cheryl Tan
+    // stu10 -> no such student
+
     @Test
-    public void testisSubscribed() {
+    public void testisSubscribed()
+    {
         assertTrue(studentService.isSubscribed( "stu01") );
         assertFalse(studentService.isSubscribed( "stu10") );
     }

@@ -136,7 +136,6 @@ public class Main
             return;
         }
 
-        // This code to check if student is already enrolled to course is not working
         for (Course studentCourse :student.getApprovedCourses()) {
             if (studentCourse.getName().equals(course.getName())) {
                 System.out.println( "Student is enrolled into the course already." );

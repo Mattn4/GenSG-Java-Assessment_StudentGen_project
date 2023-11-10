@@ -18,9 +18,11 @@ public class Student
 
     private final Map<String, Course> approvedCourses = new HashMap<>();
 
+
     public Student( String id, String name, String email, Date birthDate )
     {
         super( id, name, email, birthDate );
+
     }
 
     public int getGrade()
@@ -60,21 +62,6 @@ public class Student
 
     }
 
-    // CHALLENGE IMPLEMENTATION: Read README.md to find instructions on how to solve. 
-    public List<Course> findPassedCourses( Course course )
-    {
-        //TODO implement this method----------------------------------------------------------------------------------
-        List<Course> passedCourses = new ArrayList<>();
-
-        if ( course.getGrade() >= 60 )
-        {
-            passedCourses.add(course);
-            return passedCourses;
-        }
-
-        return null;
-    }
-
     public boolean isAttendingCourse( String courseCode )
     {
         //TODO implement this method
@@ -110,6 +97,22 @@ public class Student
         average = sum/approvedCourses.size();
 
         return average;
+    }
+
+
+    // CHALLENGE IMPLEMENTATION: Read README.md to find instructions on how to solve.
+    public List<Course> findPassedCourses( Course course )
+    {
+        //TODO implement this method----------------------------------------------------------------------------------
+        List<Course> passedCourses = new ArrayList<>();
+
+        if ( course.getGrade() >= 60 )
+        {
+            passedCourses.add(course);
+            return passedCourses;
+        }
+
+        return null;
     }
 
     @Override
