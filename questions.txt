@@ -1,0 +1,20 @@
+
+student.java
+- findPassedCourses (Course course)
+  (finds whether a student passes a course & return a list of passed course?)
+
+- getAverage
+  (average grades among all the course students enrolled)?
+
+
+main.java
+gradeStudent
+- add grade to courses enrolled by students?
+- need to create grade instance variable in course.java?
+
+
+printerhelper.java
+- how to throw & catch parse exception for wrong date format?
+can change the codes such that only MMDDYYYY?
+cuz for current formating, 00:00:00 displayed in console
+

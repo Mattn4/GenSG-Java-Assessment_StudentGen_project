@@ -12,6 +12,8 @@ public class CourseService
 
     private final Map<String, List<Student>> enrolledStudents = new HashMap<>();
 
+    private final Map<String, Map<String, Integer>> studentGradesInCourse = new HashMap<>();
+
     public CourseService()
     {
         Module module = new Module( "INTRO-CS", "Introduction to Computer Science",
@@ -105,30 +107,26 @@ public class CourseService
         }
     }
 
-    public void gradeStudentInCourse (Student student1, String courseId, int grade)
+    public void gradeStudentInCourse (Student student, String courseId, int grade)
     {
-        if ( enrolledStudents.containsKey( courseId ) ) {
-            List<Student> students = enrolledStudents.get( courseId );
-            for ( Student student : students ) {
-                if (student.getName().equals(student1.getName())) {
-                    student.setGrade(grade);
-                }
-            }
+        if ( !studentGradesInCourse.containsKey( courseId ) )
+        {
+            studentGradesInCourse.put( courseId, new HashMap<>() );
         }
+        studentGradesInCourse.get( courseId ).put( student.getName(), grade );
     }
 
-    public double showAverageGrade (String courseId) {
-
+    public double showAverageGrade (String courseId)
+    {
         double sum = 0;
         double courseAverageGrade = 0;
-        if (enrolledStudents.containsKey(courseId))
+        if (studentGradesInCourse.containsKey(courseId))
         {
-            List<Student> students = enrolledStudents.get(courseId);
-            for (Student student : students) {
-                int grade = student.getGrade();
-                sum += grade;
+            for ( String key : studentGradesInCourse.get(courseId).keySet() )
+            {
+                sum += studentGradesInCourse.get(courseId).get( key );
             }
-            courseAverageGrade = sum / students.size();
+            courseAverageGrade = sum / studentGradesInCourse.get(courseId).size();
         }
         return courseAverageGrade;
     }

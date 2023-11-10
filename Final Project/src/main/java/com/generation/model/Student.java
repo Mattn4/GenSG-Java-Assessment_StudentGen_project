@@ -10,7 +10,6 @@ public class Student
     extends Person
     implements Evaluation
 {
-    private int grade;
 
     private double average;
 
@@ -18,21 +17,12 @@ public class Student
 
     private final Map<String, Course> approvedCourses = new HashMap<>();
 
+    private final Map<String, Integer> courseGrades = new HashMap<>();
+
     public Student( String id, String name, String email, Date birthDate )
     {
         super( id, name, email, birthDate );
     }
-
-    public int getGrade()
-    {
-        return this.grade;
-    }
-
-    public int setGrade(int grade)
-    {
-        return this.grade = grade;
-    }
-
 
     public void enrollToCourse( Course course )
     {
@@ -66,16 +56,16 @@ public class Student
 
     public void gradeCourseForStudent (String courseId, int grade)
     {
-        approvedCourses.get(courseId).setGrade(grade);
+        courseGrades.put(courseId, grade);
     }
 
     @Override
     public double getAverage()
     {
         double sum = 0;
-        for ( String key : approvedCourses.keySet() )
+        for ( String key : courseGrades.keySet() )
         {
-            sum += approvedCourses.get( key ).getGrade();
+            sum += courseGrades.get( key );
         }
         average = sum/approvedCourses.size();
 
@@ -88,8 +78,7 @@ public class Student
     {
         //TODO implement this method
         List<Course> passedCourses = new ArrayList<>();
-
-        if ( approvedCourses.get(course.getCode()).getGrade() >= 60 )
+        if ( courseGrades.get(course.getCode()) >= 60 )
         {
             passedCourses.add(course);
             return passedCourses;

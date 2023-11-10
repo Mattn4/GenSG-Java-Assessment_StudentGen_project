@@ -39,8 +39,8 @@ public class Main
         // Grade Muthu in the 2 courses
         courseService.gradeStudentInCourse(muthu, "INTRO-CS-1", 56);
         muthu.gradeCourseForStudent("INTRO-CS-1", 56);
-     //   courseService.gradeStudentInCourse(muthu, "INTRO-CS-7", 81);
-    //    muthu.gradeCourseForStudent("INTRO-CS-7", 81);
+        courseService.gradeStudentInCourse(muthu, "INTRO-CS-7", 81);
+        muthu.gradeCourseForStudent("INTRO-CS-7", 81);
         System.out.println();
 
         // Find Muthu's average grade in the 2 courses
