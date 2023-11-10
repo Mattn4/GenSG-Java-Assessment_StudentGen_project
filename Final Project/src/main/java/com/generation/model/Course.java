@@ -43,7 +43,7 @@ public class Course
 
     public int getGrade()
     {
-        return grade;
+        return this.grade;
     }
 
     public int setGrade(int grade)

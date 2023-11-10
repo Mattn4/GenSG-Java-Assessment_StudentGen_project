@@ -4,6 +4,7 @@ import com.generation.model.Course;
 import com.generation.model.Module;
 import com.generation.model.Student;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +15,16 @@ public class StudentService
 
     public StudentService()
     {
-    //    subscribeStudent( new Student( "stu-01", "Cheryl Tan", "cheryltan@gmail.com", Tue Dec 12 00:00:00 SGT 2000) );
-    //    subscribeStudent( new Student( "stu-02", "Fang Xin Hui", "fangxinhui@hotmail.com", "Fri Nov 23 00:00:00 SGT 2001") );
-    //    subscribeStudent( new Student( "stu-03", "Ahmad bin Osman", "ahmadbinosman@gmail.com", Wed May 05 00:00:00 SGT 2010) );
+        subscribeStudent( new Student( "stu01", "Cheryl Tan", "cheryltan@gmail.com", new Date(101,0,17))); // 2001 Jan 17
+        subscribeStudent( new Student( "stu02", "Fang Xin Hui", "fangxinhui@hotmail.com", new Date(102,8,4)) ); // 2002 Sep 4
+        subscribeStudent( new Student( "stu03", "Ahmad bin Osman", "ahmadbinosman@gmail.com", new Date(103,4,30)) ); // 2003 May 30
+
+        Module module = new Module( "INTRO-CS", "Introduction to Computer Science",
+                "Introductory module for the generation technical programs" );
+        enrollToCourse("stu01", new Course( "INTRO-CS-1", "Introduction to Computer Science", 9, module ));
+        enrollToCourse("stu01", new Course( "INTRO-CS-2", "Introduction to Algorithms", 9, module ) );
+        enrollToCourse("stu02", new Course( "INTRO-CS-1", "Introduction to Computer Science", 9, module ));
+
     }
 
 
@@ -46,10 +54,6 @@ public class StudentService
     public void showSummary()
     {
         //TODO implement
-        // Prints the list of all the subscribed students
-        System.out.println( "List of students:" );
-        System.out.println( students.values() );
-
         // Prints the list all the subscribed students & their corresponding courses
         System.out.println( "List of students including enrolled courses:" );
         for ( String key : students.keySet() )
@@ -59,7 +63,7 @@ public class StudentService
             List<Course> courses = studentName.getApprovedCourses();
             for ( Course course : courses )
             {
-                System.out.println( course );
+                System.out.println( "\t\t" + course );
             }
         }
 

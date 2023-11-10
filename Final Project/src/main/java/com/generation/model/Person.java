@@ -1,5 +1,6 @@
 package com.generation.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 abstract public class Person
@@ -11,6 +12,8 @@ abstract public class Person
     private final String email;
 
     private final Date birthDate;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
     protected Person( String id, String name, String email, Date birthDate )
     {
@@ -43,6 +46,6 @@ abstract public class Person
     @Override
     public String toString()
     {
-        return "id='" + id + '\'' + ", name='" + name + '\'' + ", email='" + email + '\'' + ", birthDate=" + birthDate;
+        return "id='" + id + '\'' + ", name='" + name + '\'' + ", email='" + email + '\'' + ", birthDate=" + sdf.format(birthDate);
     }
 }

@@ -10,6 +10,8 @@ public class Student
     extends Person
     implements Evaluation
 {
+    private int grade;
+
     private double average;
 
     private final List<Course> courses = new ArrayList<>();
@@ -20,6 +22,17 @@ public class Student
     {
         super( id, name, email, birthDate );
     }
+
+    public int getGrade()
+    {
+        return this.grade;
+    }
+
+    public int setGrade(int grade)
+    {
+        return this.grade = grade;
+    }
+
 
     public void enrollToCourse( Course course )
     {
@@ -70,6 +83,10 @@ public class Student
         //TODO if so, what do you return? Otherwise, what else do you return?
         return approvedCourses.containsKey(courseCode);
 
+    }
+
+    public void gradeCourseForStudent (Student student, String courseId, int grade) {
+        student.approvedCourses.get(courseId).setGrade(grade);
     }
 
     @Override

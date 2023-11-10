@@ -4,10 +4,7 @@ import com.generation.model.Course;
 import com.generation.model.Module;
 import com.generation.model.Student;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class CourseService
 {
@@ -38,6 +35,16 @@ public class CourseService
         registerCourse(
             new Course( "INTRO-WEB-7", "Introduction to JavaScript for Web Development", 9, moduleWebFundamentals ) );
 
+        Student cheryl = new Student( "stu01", "Cheryl Tan", "cheryltan@gmail.com", new Date(101,0,17)); // 2001 Jan 17
+        Student xinhui = new Student( "stu02", "Fang Xin Hui", "fangxinhui@hotmail.com", new Date(102,8,4)); // 2002 Sep 4
+        Student ahmad = new Student( "stu03", "Ahmad bin Osman", "ahmadbinosman@gmail.com", new Date(103,4,30)); // 2003 May 30
+
+        enrollStudent("INTRO-CS-1", cheryl);
+        enrollStudent("INTRO-CS-1", xinhui);
+        enrollStudent("INTRO-CS-2", ahmad);
+
+        gradeStudentInCourse(cheryl, "INTRO-CS-1", 60);
+        gradeStudentInCourse(xinhui, "INTRO-CS-1", 90);
     }
 
     public void registerCourse( Course course )
@@ -84,32 +91,47 @@ public class CourseService
             Course course = courses.get( key );
             System.out.println( course );
         }
+        System.out.println();
+
         System.out.println( "Enrolled Students" );
         for ( String key : enrolledStudents.keySet() )
         {
+            System.out.println( key );
             List<Student> students = enrolledStudents.get( key );
             for ( Student student : students )
             {
-                System.out.println( student );
+                System.out.println( "\t\t" + student );
             }
         }
     }
 
-    public void showAverageGrade (String courseId) {
+    public void gradeStudentInCourse (Student student1, String courseId, int grade) {
 
-        double sum = 0;
         if ( enrolledStudents.containsKey( courseId ) )
         {
             List<Student> students = enrolledStudents.get( courseId );
             for ( Student student : students )
             {
-                int courseIndex = student.getApprovedCourses().indexOf(courseId);
-                int grade = student.getApprovedCourses().get(courseIndex).getGrade();
+                if (student.getName().equals(student1.getName())) {
+                    student.setGrade(grade);
+                }
+            }
+        }
+
+    }
+
+    public double showAverageGrade (String courseId) {
+
+        double sum = 0;
+        double courseAverageGrade = 0;
+        if (enrolledStudents.containsKey(courseId)) {
+            List<Student> students = enrolledStudents.get(courseId);
+            for (Student student : students) {
+                int grade = student.getGrade();
                 sum += grade;
             }
-            double courseAverageGrade = sum/students.size();
-
-            System.out.println(courseAverageGrade);
+            courseAverageGrade = sum / students.size();
         }
+        return courseAverageGrade;
     }
 }

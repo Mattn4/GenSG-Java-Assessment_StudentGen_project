@@ -15,7 +15,7 @@ public class PrinterHelper
         System.out.println( "|-------------------------------|" );
         System.out.println( "| Welcome to StudentGen         |" );
         System.out.println( "|-------------------------------|" );
-        System.out.println( "| Select 1 option:              |" );
+        System.out.println( "| Select an option:             |" );
         System.out.println( "| . 1 Register Student          |" );
         System.out.println( "| . 2 Find Student              |" );
         System.out.println( "| . 3 Grade Student             |" );
@@ -41,16 +41,14 @@ public class PrinterHelper
         System.out.println("| Enter student birth date(mm/dd/yyyy)|");
         DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         //TODO validate date format and catch exception to avoid crash
-        Date birthDate = formatter.parse(scanner.next());
 
-        /*
-        Date birthDate;
+        Date birthDate = new Date();
         try {
             birthDate = formatter.parse(scanner.next());
         } catch (ParseException e) {
-            throw new ParseException("Invalid date format", 48);
+            System.out.println("Invalid date format");
+            System.exit(0);
         }
-         */
 
         System.out.println("|-------------------------------------|");
         Student student = new Student(id, name, email, birthDate);
