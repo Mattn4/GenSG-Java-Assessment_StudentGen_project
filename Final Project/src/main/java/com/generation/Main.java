@@ -1,23 +1,62 @@
 package com.generation;
 
 import com.generation.model.Course;
+import com.generation.model.Module;
 import com.generation.model.Student;
 import com.generation.service.CourseService;
 import com.generation.service.StudentService;
 import com.generation.utils.PrinterHelper;
 
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main
 {
-
     public static void main( String[] args )
         throws ParseException
     {
         StudentService studentService = new StudentService();
         CourseService courseService = new CourseService();
+
+        // Register new student, muthu
+        Student muthu = new Student( "stu04", "Muthu Patel", "muthupatel@yahoomail.com", new Date(103,6,28)); // 2003 July 28
+        studentService.subscribeStudent( muthu );
+
+        // Initialize 2 courses
+        Module module = new Module( "INTRO-CS", "Introduction to Computer Science",
+                "Introductory module for the generation technical programs" );
+        Course introCS1 =  new Course( "INTRO-CS-1", "Introduction to Computer Science", 9, module );
+        Course introCS7 =  new Course(  "INTRO-CS-7", "Agile Software Development with SCRUM", 9, module );
+
+        // Enroll muthu into the 2 courses
+        courseService.enrollStudent( "INTRO-CS-1", muthu );
+        studentService.enrollToCourse( "stu04", introCS1 );
+        courseService.enrollStudent( "INTRO-CS-7", muthu );
+        studentService.enrollToCourse( "stu04", introCS7 );
+
+        // Grade Muthu in the 2 courses
+        courseService.gradeStudentInCourse(muthu, "INTRO-CS-1", 56);
+        muthu.gradeCourseForStudent("INTRO-CS-1", 56);
+        courseService.gradeStudentInCourse(muthu, "INTRO-CS-7", 81);
+        muthu.gradeCourseForStudent("INTRO-CS-7", 81);
+
+        //
+        System.out.println();
+        System.out.println("Muthu's average grade is: " + muthu.getAverage());
+        System.out.println();
+
+        // muthu failed course introCS1, so return null
+        System.out.println(muthu.findPassedCourses(introCS1));
+        // muthu passed course introCS7, so return the course
+        System.out.println(muthu.findPassedCourses(introCS7));
+
+        System.out.println();
+
+        //------------------------------------------------------------------------------------------
+        // Start of menu
+
         Scanner scanner = new Scanner( System.in );
         int option = 0;
         do
@@ -80,7 +119,6 @@ public class Main
 
     private static void gradeStudent( StudentService studentService,  CourseService courseService, Scanner scanner )
     {
-
         System.out.println( "Insert course ID" );
         String courseId = scanner.next();
 
@@ -112,9 +150,9 @@ public class Main
         int grade = scanner.nextInt();
 
         courseService.gradeStudentInCourse(student, courseId, grade);
-        student.gradeCourseForStudent(student, courseId, grade);
-
+        student.gradeCourseForStudent(courseId, grade);
     }
+
     private static void enrollStudentToCourse( StudentService studentService, CourseService courseService,
                                                Scanner scanner )
     {
@@ -147,7 +185,6 @@ public class Main
         courseService.enrollStudent( courseId, student );
         studentService.enrollToCourse( studentId, course );
         System.out.println( "Student with ID: " + studentId + " enrolled successfully to " + courseId );
-
     }
 
     private static void showStudentsSummary( StudentService studentService, Scanner scanner )

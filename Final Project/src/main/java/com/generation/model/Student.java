@@ -18,12 +18,12 @@ public class Student
 
     private final Map<String, Course> approvedCourses = new HashMap<>();
 
-
     public Student( String id, String name, String email, Date birthDate )
     {
         super( id, name, email, birthDate );
-
     }
+
+
 
     public int getGrade()
     {
@@ -44,7 +44,6 @@ public class Student
         registerApprovedCourse( course );
         //TODO 2. ALSO, 'add' the course in the students' courses aka List<course>
         courses.add(course);
-
     }
 
     public void registerApprovedCourse( Course course )
@@ -59,7 +58,6 @@ public class Student
         //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
         //TODO if so, what do you return? Otherwise, what else do you return?
         return approvedCourses.containsKey(courseCode);
-
     }
 
     public boolean isAttendingCourse( String courseCode )
@@ -69,26 +67,15 @@ public class Student
         //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
         //TODO if so, what do you return? Otherwise, what else do you return?
         return approvedCourses.containsKey(courseCode);
-
     }
 
-    public void gradeCourseForStudent (Student student, String courseId, int grade) {
-        student.approvedCourses.get(courseId).setGrade(grade);
+    public void gradeCourseForStudent (String courseId, int grade) {
+        approvedCourses.get(courseId).setGrade(grade);
     }
 
     @Override
     public double getAverage()
     {
-        /* if use courses arraylist
-        double sum = 0;
-        for (Course course: courses) {
-            sum += course.getGrade();
-        }
-        average = sum/courses.size();
-
-        return average;
-         */
-
         double sum = 0;
         for ( String key : approvedCourses.keySet() )
         {
