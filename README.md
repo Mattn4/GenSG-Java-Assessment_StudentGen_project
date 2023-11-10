@@ -7,7 +7,6 @@
    - figuring out how to store grades
    - handling parse exception<br><br>
 
-
 ### 3. What would make your experience with this assessment better?
    - if more time were given
    - if the instructions were clearer, explaining various methods in the source code
