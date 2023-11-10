@@ -39,18 +39,24 @@ public class Main
         // Grade Muthu in the 2 courses
         courseService.gradeStudentInCourse(muthu, "INTRO-CS-1", 56);
         muthu.gradeCourseForStudent("INTRO-CS-1", 56);
-        courseService.gradeStudentInCourse(muthu, "INTRO-CS-7", 81);
-        muthu.gradeCourseForStudent("INTRO-CS-7", 81);
+     //   courseService.gradeStudentInCourse(muthu, "INTRO-CS-7", 81);
+    //    muthu.gradeCourseForStudent("INTRO-CS-7", 81);
+        System.out.println();
 
-        //
-        System.out.println();
+        // Find Muthu's average grade in the 2 courses
         System.out.println("Muthu's average grade is: " + muthu.getAverage());
-        System.out.println();
 
         // muthu failed course introCS1, so return null
-        System.out.println(muthu.findPassedCourses(introCS1));
+        System.out.println("Muthu's pass status for the course INTRO-CS-1: "+ muthu.findPassedCourses(introCS1));
+
         // muthu passed course introCS7, so return the course
-        System.out.println(muthu.findPassedCourses(introCS7));
+        System.out.println("Muthu passed the course: " + muthu.findPassedCourses(introCS7));
+
+        // testing isCourseApproved method in student.java
+        // return true as Muthu is enrolled into INTRO-CS-1
+        System.out.println("Is the course INTRO-CS-1 approved for Muthu? " + muthu.isCourseApproved("INTRO-CS-1"));
+        // return false as Muthu is not enrolled into INTRO-CS-2
+        System.out.println("Is the course INTRO-CS-2 approved for Muthu? " + muthu.isCourseApproved("INTRO-CS-2"));
 
         System.out.println();
 

@@ -41,10 +41,7 @@ public class CourseService
 
         enrollStudent("INTRO-CS-1", cheryl);
         enrollStudent("INTRO-CS-1", xinhui);
-
-        enrollStudent("INTRO-CS-2", cheryl);
-
-        enrollStudent("INTRO-CS-3", ahmad);
+        enrollStudent("INTRO-CS-2", ahmad);
 
         gradeStudentInCourse(cheryl, "INTRO-CS-1", 60);
         gradeStudentInCourse(xinhui, "INTRO-CS-1", 90);
@@ -108,26 +105,24 @@ public class CourseService
         }
     }
 
-    public void gradeStudentInCourse (Student student1, String courseId, int grade) {
-
-        if ( enrolledStudents.containsKey( courseId ) )
-        {
+    public void gradeStudentInCourse (Student student1, String courseId, int grade)
+    {
+        if ( enrolledStudents.containsKey( courseId ) ) {
             List<Student> students = enrolledStudents.get( courseId );
-            for ( Student student : students )
-            {
+            for ( Student student : students ) {
                 if (student.getName().equals(student1.getName())) {
                     student.setGrade(grade);
                 }
             }
         }
-
     }
 
     public double showAverageGrade (String courseId) {
 
         double sum = 0;
         double courseAverageGrade = 0;
-        if (enrolledStudents.containsKey(courseId)) {
+        if (enrolledStudents.containsKey(courseId))
+        {
             List<Student> students = enrolledStudents.get(courseId);
             for (Student student : students) {
                 int grade = student.getGrade();

@@ -24,8 +24,7 @@ public class StudentService
         enrollToCourse("stu01", new Course( "INTRO-CS-1", "Introduction to Computer Science", 9, module ));
         enrollToCourse("stu02", new Course( "INTRO-CS-1", "Introduction to Computer Science", 9, module ));
 
-        enrollToCourse("stu01", new Course( "INTRO-CS-2", "Introduction to Algorithms", 9, module ) );
-        enrollToCourse("stu03", new Course( "INTRO-CS-3", "Algorithm Design and Problem Solving - Introduction ", 9, module ));
+        enrollToCourse("stu03", new Course( "INTRO-CS-2", "Introduction to Algorithms", 9, module ) );
     }
 
 

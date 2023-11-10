@@ -23,8 +23,6 @@ public class Student
         super( id, name, email, birthDate );
     }
 
-
-
     public int getGrade()
     {
         return this.grade;
@@ -39,7 +37,6 @@ public class Student
     public void enrollToCourse( Course course )
     {
         //TODO implement this method
-        // Martin's hints
         //TODO 1. 'put' the course to student's approvedCourses aka HashMap<code, course> via registerApprovedCourse
         registerApprovedCourse( course );
         //TODO 2. ALSO, 'add' the course in the students' courses aka List<course>
@@ -54,7 +51,6 @@ public class Student
     public boolean isCourseApproved( String courseCode )
     {
         //TODO implement this method
-        // Martin's hints
         //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
         //TODO if so, what do you return? Otherwise, what else do you return?
         return approvedCourses.containsKey(courseCode);
@@ -63,13 +59,13 @@ public class Student
     public boolean isAttendingCourse( String courseCode )
     {
         //TODO implement this method
-        // Martin's hints
         //TODO 1. HINT: does the students approvedCourses aka HashMap<code, course> 'contains the key' to courseCode?
         //TODO if so, what do you return? Otherwise, what else do you return?
         return approvedCourses.containsKey(courseCode);
     }
 
-    public void gradeCourseForStudent (String courseId, int grade) {
+    public void gradeCourseForStudent (String courseId, int grade)
+    {
         approvedCourses.get(courseId).setGrade(grade);
     }
 
@@ -90,10 +86,10 @@ public class Student
     // CHALLENGE IMPLEMENTATION: Read README.md to find instructions on how to solve.
     public List<Course> findPassedCourses( Course course )
     {
-        //TODO implement this method----------------------------------------------------------------------------------
+        //TODO implement this method
         List<Course> passedCourses = new ArrayList<>();
 
-        if ( course.getGrade() >= 60 )
+        if ( approvedCourses.get(course.getCode()).getGrade() >= 60 )
         {
             passedCourses.add(course);
             return passedCourses;
@@ -106,8 +102,8 @@ public class Student
     public List<Course> getApprovedCourses()
     {
         //TODO implement this method
-        // Martin's hints
         //TODO 1. Hint, where do the list of courses come from?
+        // change approvedCourses hashmap intp arraylist
         return new ArrayList<>(approvedCourses.values());
     }
 

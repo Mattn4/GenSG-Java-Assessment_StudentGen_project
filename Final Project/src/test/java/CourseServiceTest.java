@@ -27,12 +27,12 @@ public class CourseServiceTest {
 
         assertEquals(75.0, courseService.showAverageGrade("INTRO-CS-1"));
 
-        /* Course "INTRO-CS-3"
+        /* Course "INTRO-CS-2"
                    ahmad: no grade yet, initialized with 0
 
            Average grade = 0.0  */
 
-        assertEquals(0.0, courseService.showAverageGrade("INTRO-CS-3"));
+        assertEquals(0.0, courseService.showAverageGrade("INTRO-CS-2"));
 
     }
 
