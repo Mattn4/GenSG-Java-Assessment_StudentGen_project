@@ -33,20 +33,26 @@ public class PrinterHelper
         System.out.println("| . 1 Register Student                |");
         System.out.println("|-------------------------------------|");
         System.out.println("| Enter student name:                 |");
+
+        // Allowed entering names with space, eg "Tan Meng Liang"
+        scanner.useDelimiter("\\n");
+
         String name = scanner.next();
         System.out.println("| Enter student ID:                   |");
+        scanner.reset();
         String id = scanner.next();
         System.out.println("| Enter student email:                |");
         String email = scanner.next();
         System.out.println("| Enter student birth date(mm/dd/yyyy)|");
         DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+        formatter.setLenient(false);
         //TODO validate date format and catch exception to avoid crash
 
         Date birthDate = new Date();
         try {
             birthDate = formatter.parse(scanner.next());
         } catch (ParseException e) {
-            System.out.println("Invalid date format");
+            System.out.println("Invalid date format. Please try again");
             System.exit(0);
         }
 
