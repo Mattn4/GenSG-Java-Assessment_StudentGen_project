@@ -91,6 +91,8 @@ public class Main
                 case 7:
                     showCourseAverageGrade( courseService, scanner );
                     break;
+                case 8:
+                    break;
                 default:
                     System.out.println("Key in digit 1-8 only");
                     break;
