@@ -1,12 +1,10 @@
-# Reflection Questions:
+# GenSG-Java-Assessment_StudentGen_project
 
-### 1. What did you like about this project?
-   - Exploring different codes to calculate average grades (though ended up using most familiar method<br><br>
+Course enrolment program with te following features:
+- register new students
+- enrol students into courses
+- check student list & course list
+- grade students 
+- check course average grade<br><br>
 
-### 2. What did you struggle with in this project?
-   - figuring out how to store grades
-   - handling parse exception<br><br>
-
-### 3. What would make your experience with this assessment better?
-   - if more time were given
-   - if the instructions were clearer, explaining various methods in the source code
+<a href="#/"><img src="/misc/studentgenproject.gif" width="400"></a>
